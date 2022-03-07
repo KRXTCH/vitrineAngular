@@ -1,6 +1,17 @@
-.app-content{
-    background-image: url("./ressources/images/wallpaper.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 2rem 15rem;
+.app-body{
+    background: linear-gradient(to bottom, #20403b 0px, transparent 150px), url(https://s3.gaming-cdn.com/images/products/4824/background/4824.jpg) center 0px no-repeat #20403b;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 160px;
+    left: 0;
+}
+
+.card-custom{
+    width: 1036px;
+    margin: 0 auto;
+    background: #eee;
+    position: relative;
+    box-shadow: 0 0 3px rgba(0,0,0,.39);
+    border-radius: 10px;
 }

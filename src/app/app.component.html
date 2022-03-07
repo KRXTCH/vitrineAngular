@@ -302,16 +302,20 @@
   }
 </style>
 
-<div class="app-content">
-  <mat-card [style.background]="'whitesmoke'" [style.color]="'grey'">
-    <mat-grid-list cols="4" gutterSize="1rem" rowHeight="500px">
-      <mat-grid-tile *ngFor="let product of products">
-        <app-product-card [myProduct]="product"></app-product-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card>
-  <!-- <div class="game-list" style="background-color: whitesmoke;">
-    
-  </div> -->
+<div class="app">
+  <app-app-header>
+  </app-app-header>
+  <div class="app-body">
+    <mat-card class="card-custom">
+      <mat-card-header style="background-image: url('./ressources/images/card_header.jpg');">
+
+      </mat-card-header>
+      <mat-grid-list cols="4" gutterSize="1rem" rowHeight="360px">
+        <mat-grid-tile *ngFor="let product of products">
+          <app-product-card [myProduct]="product"></app-product-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </div>
 </div>
 <router-outlet></router-outlet>
