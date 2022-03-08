@@ -14,4 +14,26 @@
     position: relative;
     box-shadow: 0 0 3px rgba(0,0,0,.39);
     border-radius: 10px;
+    color: grey;
+    padding: 0;
+}
+
+.card-header{
+    background-image: url(https://s1.gaming-cdn.com/img/products/4824/hcover/4824.jpg);
+    background-size: cover;
+    height: 17rem;
+    margin-bottom: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.grid-list{
+    height: 65vh!important;
+    overflow: scroll;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.gamelist-container{
+    padding: 1vh;
 }
