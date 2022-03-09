@@ -15,6 +15,7 @@ import { SortByNamePipe } from './sort-by-name.pipe';
 import { SortByDatePipe } from './sort-by-date.pipe';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from './search.pipe';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SearchPipe } from './search.pipe';
     AppHeaderComponent,
     SortByNamePipe,
     SortByDatePipe,
-    SearchPipe
+    SearchPipe,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
