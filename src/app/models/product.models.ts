@@ -4,6 +4,6 @@ export class Product{
         public description: string,
         public image: string,
         public price: number,
-        public isDlc : boolean
+        public date : Date
     ){}
 }

@@ -1,4 +1,19 @@
 <div class="header">
-    <div class="nav-container"></div>
-    <div style="background-color: #20403b; height: 70px;"></div>
+    <div class="nav-container">
+        <div class="search-container">
+            <input type="text" placeholder="Search a game" [(ngModel)]="search"/>
+        </div>
+    </div>
+    <div style="background-color: #20403b; height: 70px;">
+        <div class="selector-component">
+            <select (change)="OnNameSelectorChange($event)">
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+            </select>
+            <select (change)="OnDateSelectorChange($event)">
+                <option value="asc">Le + récent</option>
+                <option value="desc">Le - récent</option>
+            </select>
+        </div>
+    </div>
 </div>

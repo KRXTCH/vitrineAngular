@@ -11,12 +11,19 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppHeaderComponent } from './app-header/app-header.component';
+import { SortByNamePipe } from './sort-by-name.pipe';
+import { SortByDatePipe } from './sort-by-date.pipe';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductCardComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    SortByNamePipe,
+    SortByDatePipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +31,8 @@ import { AppHeaderComponent } from './app-header/app-header.component';
     MatCardModule,
     MatGridListModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

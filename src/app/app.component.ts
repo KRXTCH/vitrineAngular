@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Product } from './models/product.models';
-const gamesData = import('./ressources/data/games.json');
+import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +10,18 @@ const gamesData = import('./ressources/data/games.json');
 export class AppComponent implements OnInit {
   products!: Product[];
 
-  async ngOnInit() {
-    this.products = await this.DeserializePromise()
-    
-  }
+  sortNameOrderBy : string = "asc";
 
-  async DeserializePromise(){
-    var games = new Array();
+  sortDateOrderBy : string = "asc";
 
-    await Promise.resolve(gamesData).then((v) => {
-        for (const value in v) {
-          if(!isNaN(parseInt(value))){
-            games.push(v[value])
-          }
-        }
-      }
-    )
-    return games
+  @Input()
+  search: string = "";
+
+  constructor(private productsService: ProductsService){ }
+
+
+  ngOnInit() {
+    this.products = this.productsService.products;
   }
 }
 

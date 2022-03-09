@@ -1,4 +1,34 @@
 .nav-container{
     height: 90px;
     background-color: black;
+    justify-content: center;
+    display: flex;
+}
+
+.search-container{
+    border-radius: 100px;
+    background-color: rgba(255,84,0,.25);
+    padding-left: 1rem;
+    width: fit-content;
+    position: absolute;
+}
+
+.search-container input{
+    color: #ff5400;
+    background: transparent;
+    border : none;
+    width: 20rem;
+    height: 44px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.selector-component{
+    width: 1036px;
+    margin: auto;
+}
+
+.selector-component select{
+    margin-right: 2rem;
+    margin-top: 1rem;
 }

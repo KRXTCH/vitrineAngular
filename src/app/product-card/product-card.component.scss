@@ -1,10 +1,12 @@
 .product-card-container{
     width: fit-content;
+    background-color: #eee;
+    margin-top: 1rem;
 }
 
 .product-card_image{
     border-radius: 10px;
-    width: 20vh;
+    width: 14vh;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.3);
 }
 
