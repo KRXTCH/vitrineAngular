@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 
 @Component({
@@ -6,12 +6,20 @@ import { ProductsService } from '../services/products.service';
   templateUrl: './app-header.component.html',
   styleUrls: ['./app-header.component.scss']
 })
+
 export class AppHeaderComponent implements OnInit {
-  search : string = "";
+ @Output() onSearch = new EventEmitter()
+ search : string = ""
+
+ searchThis(){
+   this.onSearch.emit(this.search)
+ }
   
-  constructor(private productsService: ProductsService){ }
+  constructor(private productsService: ProductsService){ 
+  }
 
   ngOnInit(): void {
+    this.onSearch.emit(this.productsService.search)
   }
 
   OnNameSelectorChange(event: Event){

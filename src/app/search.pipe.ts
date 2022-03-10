@@ -6,7 +6,7 @@ import { Product } from './models/product.models';
 })
 export class SearchPipe implements PipeTransform {
   transform(products: Product[], searchValue?: any) {
-    return (products || []).filter(p => p.name.includes(searchValue));
+    return (products || []).filter(p => p.name.toLocaleLowerCase().startsWith(searchValue.toLocaleLowerCase()));
   }
 
 }

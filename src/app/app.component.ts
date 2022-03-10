@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
 
   sortDateOrderBy : string = "asc";
 
-  @Input()
   search: string = "";
 
   constructor(private productsService: ProductsService){ }
@@ -22,6 +21,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.productsService.products;
+  }
+
+  onSearchProduct(data : string){
+   this.search = data;
+   console.log(this.search)
+
   }
 }
 

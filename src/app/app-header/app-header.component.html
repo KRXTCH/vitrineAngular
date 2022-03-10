@@ -1,7 +1,7 @@
 <div class="header">
     <div class="nav-container">
         <div class="search-container">
-            <input type="text" placeholder="Search a game" [(ngModel)]="search"/>
+            <input type="text" placeholder="Search a game" [(ngModel)]="search" (input)="searchThis()"/>
         </div>
     </div>
     <div style="background-color: #20403b; height: 70px;">
