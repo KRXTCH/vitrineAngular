@@ -1,2 +1,26 @@
-<app-product-card [myProduct]="myProduct"> </app-product-card>
-<ab routerLink="">Back to home</ab>
+<div style="background: #272727; height: 100%;">
+    <div class="product-detail-back" style='background:  linear-gradient(to bottom, rgba(255,255,255,0) 20%,
+    #272727), url({{myProduct.cover_img}});'>
+        <a routerLink="" style="position: absolute;">Back to home</a>
+        <mat-card class="product-detail-card">
+            <div class="inline-flex-container">
+                <div class="img-container">
+                    <img [src]="myProduct.image">
+                </div>
+                <div class="product-info-container">
+                    <mat-card class="product-info-card">
+                        <h3 class="bold">{{myProduct.name}}</h3>
+                        <p>En stock</p>
+                        <h1 class="price bold">{{myProduct.price}}€</h1>
+                        <button class="add-to-cart-button">Ajouter au panier</button>
+                    </mat-card>
+                </div>
+            </div>
+
+            <div class="product-desc-container">
+                <h2 style="font-size: 2rem; margin-top: 5rem;margin-bottom: 2rem;">À propos du jeu</h2>
+                <p style="color: gray;font-size: 1rem;">{{myProduct.description}}</p>
+            </div>
+        </mat-card>
+    </div>
+</div>
