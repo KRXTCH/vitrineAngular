@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CartModels} from "../models/Cart.models";
+import {ProductCart} from "../models/ProductCart";
 import {Product} from "../models/product.models";
 
 @Injectable({
@@ -11,9 +12,9 @@ export class CartService {
   constructor() {
   }
 
-  addToCart(product: Product) {
-    this.cart.products.push(product);
-    this.cart.total += product.price;
+  addToCart(productCart: ProductCart) {
+    this.cart.products.push(productCart);
+    this.cart.total += productCart.product.price * productCart.quantity;
     this.cart.count++;
   }
 
@@ -21,9 +22,9 @@ export class CartService {
     return this.cart;
   }
 
-  removeFromCart(product: Product) {
-    this.cart.products.splice(this.cart.products.indexOf(product), 1);
-    this.cart.total -= product.price;
+  removeFromCart(productCart: ProductCart) {
+    this.cart.products.splice(this.cart.products.indexOf(productCart), 1);
+    this.cart.total -= productCart.product.price;
     this.cart.count--;
   }
 
