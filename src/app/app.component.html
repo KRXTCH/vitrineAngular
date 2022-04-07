@@ -1,19 +1,5 @@
-<div class="app">
-  <app-app-header (onSearch)="onSearchProduct($event)">
-  </app-app-header>
-  <div class="app-body">
-    <mat-card class="card-custom">
-      <mat-card-header class="card-header">
-      </mat-card-header>
-      <div class="gamelist-container">
-        <mat-grid-list class="grid-list" cols="5" rowHeight="300px">
-          <mat-grid-tile *ngFor="let product of (products | sortByName : sortNameOrderBy | sortByDate : sortDateOrderBy | search : search)">
-            <app-product-card [myProduct]="product"></app-product-card>
-          </mat-grid-tile>
-        </mat-grid-list>
-      </div>
-    </mat-card>
-  </div>
+<div>
+  <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
 
