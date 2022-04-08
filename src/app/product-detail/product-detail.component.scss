@@ -10,12 +10,12 @@
     background: transparent;
     box-shadow: none !important;
     width: 50% !important;
-    margin-top: 30vh;
+    margin-top: 20vh;
     margin-left: auto;
     margin-right: auto;
 }
 
-.inline-flex-container{
+.inline-flex-container {
     display: inline-flex;
     width: 100%;
 }
@@ -24,11 +24,11 @@
     border-radius: 15px;
 }
 
-.product-info-container{
+.product-info-container {
     width: 65%;
 }
 
-.product-info-card{
+.product-info-card {
     background-color: #272727;
     color: white;
     width: 80%;
@@ -38,7 +38,7 @@
     box-shadow: none !important;
 }
 
-.add-to-cart-button{
+.add-to-cart-button {
     border: none;
     border-radius: 15px;
     color: white;
@@ -50,16 +50,78 @@
     cursor: pointer;
 }
 
-.price{
+.price {
     margin-top: 3rem;
+    margin-bottom: 1rem;
     font-size: 2rem;
 }
 
-.bold{
-    
+.bold {
+
     font-weight: 500;
 }
 
-.product-desc-container{
+.product-desc-container {
     width: 100%;
+}
+
+.checked {
+    color: lightgreen !important;
+}
+
+.available-container {
+    display: inline-flex;
+}
+
+.back-btn {
+    position: absolute;
+    margin: 2rem;
+}
+
+.back-btn svg {
+    color: #ff5400;
+}
+
+.game-order-specification{
+    margin: 1rem 0;
+}
+
+.quantity-container{
+    display: inline;
+    margin: 0 1rem;
+}
+
+.quantity-btn {
+    border: none;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    background-color: #ff5400;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.quantity-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ff5400;
+    color: white;
+    width: 2rem;
+    margin: 0 1rem;
+    text-align: center;
+}
+
+.select-edition-container select {
+    background-color: rgba(255, 84, 0, 0.25);
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    color: #ff5400;
+    font-size: 1rem;
+}
+
+.select-edition-container{
+    display: inline;
+    margin: 0 1rem;
 }

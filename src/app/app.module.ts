@@ -18,8 +18,8 @@ import { SearchPipe } from './search.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { CartComponentComponent } from './cart-component/cart-component.component';
 import { CartComponent } from './cart/cart.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { CartComponent } from './cart/cart.component';
     FooterComponent,
     ProductsListComponent,
     ProductDetailComponent,
-    CartComponentComponent,
-    CartComponent
+    CartComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
