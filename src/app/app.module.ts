@@ -41,7 +41,7 @@ import { HeaderComponent } from './header/header.component';
     ProductsListComponent,
     ProductDetailComponent,
     CartComponent,
-    CartQuantitySelectComponent
+    CartQuantitySelectComponent,
     HeaderComponent
   ],
   imports: [

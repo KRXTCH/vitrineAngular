@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {CartModels} from "../models/Cart.models";
 import {ProductCart} from "../models/ProductCart";
-import {Product} from "../models/product.models";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +16,10 @@ export class CartService {
     this.cart.products.push(productCart);
     this.cart.total += productCart.price * productCart.quantity;
     this.cart.count++;
+  }
+
+  getProductCount(){
+    return this.cart.count;
   }
 
   getCart() {
@@ -44,18 +47,21 @@ export class CartService {
     productCart.quantity = value;
 
     if (value > this.previousQuantity){
-      this.cart.total += productCart.product.price;
+      this.cart.total += productCart.price;
       this.cart.count++;
       this.previousQuantity = value;
     } else if (value < this.previousQuantity){
-      this.cart.total -= productCart.product.price;
+      this.cart.total -= productCart.price;
       this.cart.count--;
       this.previousQuantity = value;
     }
   }
 
-
   getTotalPrice() {
     return this.cart.total;
+  }
+
+  isProductInCart(productName : string){
+    return (this.cart.products || []).filter(p => p.name === productName);
   }
 }

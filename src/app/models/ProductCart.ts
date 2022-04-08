@@ -14,6 +14,6 @@ export class ProductCart {
     ) {}
 
   get totalPrice() {
-    return this.product.price * this.quantity;
+    return this.price * this.quantity;
   }
 }
