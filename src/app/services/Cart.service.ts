@@ -15,7 +15,7 @@ export class CartService {
 
   addToCart(productCart: ProductCart) {
     this.cart.products.push(productCart);
-    this.cart.total += productCart.product.price * productCart.quantity;
+    this.cart.total += productCart.price * productCart.quantity;
     this.cart.count++;
   }
 
@@ -25,7 +25,7 @@ export class CartService {
 
   removeFromCart(productCart: ProductCart) {
     this.cart.products.splice(this.cart.products.indexOf(productCart), 1);
-    this.cart.total -= productCart.product.price;
+    this.cart.total -= productCart.price;
     this.cart.count--;
   }
 

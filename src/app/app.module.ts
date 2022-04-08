@@ -19,11 +19,15 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
+
 import {MatSelectModule} from "@angular/material/select";
 import { CartQuantitySelectComponent } from './cart-quantity-select/cart-quantity-select.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+
+import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import {MatInputModule} from "@angular/material/input";
     ProductDetailComponent,
     CartComponent,
     CartQuantitySelectComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

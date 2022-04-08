@@ -22,10 +22,7 @@ export class ProductsListComponent implements OnInit {
     this.products = this.productsService.products;
   }
 
-
   onSearchProduct(data : string){
     this.search = data;
-    console.log(this.search)
- 
    }
 }
