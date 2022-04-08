@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../models/product.models';
+import { ProductCart } from '../models/ProductCart';
+import { CartService } from '../services/Cart.service';
 import { ProductsService } from '../services/products.service';
 
 @Component({
@@ -12,12 +14,15 @@ export class ProductDetailComponent implements OnInit {
   myProduct!: any;
   id: number = 0;
   orientation: string = '';
-  quantity: number = 1
-  currentPrice! : number 
+  quantity: number = 1;
+  currentPrice! : number;
+  currentEdition : string = "Colector";
 
   constructor(
     private productService: ProductsService,
-    private route: ActivatedRoute) {
+    private cartService : CartService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.route.params.subscribe( params => {
       this.id = parseInt(params['id'])
     } );
@@ -41,7 +46,18 @@ export class ProductDetailComponent implements OnInit {
 
   OnChange(data : any){
     this.currentPrice = this.myProduct.editions[data.value]
-    console.log(this.currentPrice)
   }
 
+  AddToCart(){
+    this.cartService.addToCart(new ProductCart(this.myProduct.id, this.myProduct.name, this.myProduct.description,
+      this.myProduct.image, this.currentPrice, this.myProduct.date, this.myProduct.cover_img, this.currentEdition, this.quantity))
+  }
+
+  isInCart(name : string){
+    return this.cartService.isProductInCart(name).length;
+  }
+
+  goToCart(){
+    this.router.navigate(['/cart']);
+  }
 }
