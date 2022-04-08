@@ -8,18 +8,17 @@ import { ProductsService } from '../services/products.service';
 })
 
 export class AppHeaderComponent implements OnInit {
- @Output() onSearch = new EventEmitter()
- search : string = ""
+  @Output() onSearch = new EventEmitter()
+  search : string = ""
 
- searchThis(){
-   this.onSearch.emit(this.search)
- }
-  
   constructor(private productsService: ProductsService){ 
   }
 
   ngOnInit(): void {
-    this.onSearch.emit(this.productsService.search)
+  }
+
+  searchThis(data : Event){
+    this.onSearch.emit(data);
   }
 
   OnNameSelectorChange(event: Event){
@@ -29,5 +28,4 @@ export class AppHeaderComponent implements OnInit {
   OnDateSelectorChange(event: Event){
     this.productsService.setDateOrderBy((event.target as HTMLTextAreaElement).value)
   }
-
 }

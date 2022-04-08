@@ -1,0 +1,37 @@
+.nav-container{
+    height: 90px;
+    background-color: black;
+    justify-content: center;
+    display: flex;
+}
+
+.search-container{
+    border-radius: 100px;
+    background-color: rgba(255,84,0,.25);
+    padding-left: 1rem;
+    width: fit-content;
+    position: absolute;
+    margin: 1.4rem;
+}
+
+.search-container input{
+    color: #ff5400;
+    background: transparent;
+    border : none;
+    width: 20rem;
+    height: 44px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.cart-icon {
+    color: #ff5400;
+    position: absolute;
+    right: 0;
+    margin: 2rem;
+}
+
+.cart-icon a{
+    text-decoration: none;
+    color: #ff5400;
+}

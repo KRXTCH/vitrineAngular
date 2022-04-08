@@ -6,7 +6,7 @@
         <mat-card-header class="card-header">
         </mat-card-header>
         <div class="gamelist-container">
-          <mat-grid-list class="grid-list" cols="5" rowHeight="200px">
+          <mat-grid-list class="grid-list" cols="3" rowHeight="200px">
             <mat-grid-tile *ngFor="let product of (products | sortByName : sortNameOrderBy | sortByDate : sortDateOrderBy | search : search)">
               <a [routerLink]="['product', product.id]">
                 <app-product-card [myProduct]="product"></app-product-card>

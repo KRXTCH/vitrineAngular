@@ -1,7 +1,18 @@
 <div style="background: #272727; height: 100%;">
+    <app-header></app-header>
     <div class="product-detail-back" style='background:  linear-gradient(to bottom, rgba(255,255,255,0) 20%,
     #272727), url({{myProduct.cover_img}});'>
-        <a routerLink="" style="position: absolute;">Back to home</a>
+        <a routerLink="" class="back-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-bar-to-left" width="24"
+                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <line x1="10" y1="12" x2="20" y2="12"></line>
+                <line x1="10" y1="12" x2="14" y2="16"></line>
+                <line x1="10" y1="12" x2="14" y2="8"></line>
+                <line x1="4" y1="4" x2="4" y2="20"></line>
+            </svg>
+        </a>
         <mat-card class="product-detail-card">
             <div class="inline-flex-container">
                 <div class="img-container">
@@ -10,8 +21,31 @@
                 <div class="product-info-container">
                     <mat-card class="product-info-card">
                         <h1 class="bold">{{myProduct.name}}</h1>
-                        <p>Available</p>
-                        <p class="price bold">{{myProduct.price}}$</p>
+                        <div class="available-container">
+                            <span class="checked">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M5 12l5 5l10 -10"></path>
+                                </svg>
+                            </span>
+                            <p>Available</p>
+                        </div>
+                        <p class="price bold">{{currentPrice}}$</p>
+                        <div class="game-order-specification">
+                            <div class="quantity-container">
+                                <button class="quantity-btn quantity-down" (click)="OnQuantityDown()">-</button>
+                                <input class="quantity-input" placeholder="1" value="{{quantity}}">
+                                <button class="quantity-btn quantity-up" (click)="OnQuantityUp()">+</button>
+                            </div>
+                            <div class="select-edition-container">
+                                <select (change)="OnChange($event.target)">
+                                    <option *ngFor="let edition of myProduct.editions | keyvalue"
+                                     [value]="edition.key">{{edition.key}}</option>
+                                </select>
+                            </div>
+                        </div>
                         <button class="add-to-cart-button">Add to cart</button>
                     </mat-card>
                 </div>
