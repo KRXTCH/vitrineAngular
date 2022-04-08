@@ -13,13 +13,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { SortByNamePipe } from './sort-by-name.pipe';
 import { SortByDatePipe } from './sort-by-date.pipe';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SearchPipe } from './search.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
+
+import {MatSelectModule} from "@angular/material/select";
+import { CartQuantitySelectComponent } from './cart-quantity-select/cart-quantity-select.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+
 import { HeaderComponent } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +41,7 @@ import { HeaderComponent } from './header/header.component';
     ProductsListComponent,
     ProductDetailComponent,
     CartComponent,
+    CartQuantitySelectComponent
     HeaderComponent
   ],
   imports: [
@@ -42,7 +51,12 @@ import { HeaderComponent } from './header/header.component';
     MatGridListModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

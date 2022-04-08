@@ -8,6 +8,7 @@ import {Product} from "../models/product.models";
 })
 export class CartService {
   cart: CartModels = new CartModels([], 0, 0, new Date());
+  previousQuantity: number = 1;
 
   constructor() {
   }
@@ -33,5 +34,28 @@ export class CartService {
     this.cart.total = 0;
     this.cart.count = 0;
     this.cart.createdAt = new Date();
+  }
+
+  updateQuantity(value: any |undefined) {
+    console.log(value);
+  }
+
+  changeQuantity(productCart: ProductCart, value: number) {
+    productCart.quantity = value;
+
+    if (value > this.previousQuantity){
+      this.cart.total += productCart.product.price;
+      this.cart.count++;
+      this.previousQuantity = value;
+    } else if (value < this.previousQuantity){
+      this.cart.total -= productCart.product.price;
+      this.cart.count--;
+      this.previousQuantity = value;
+    }
+  }
+
+
+  getTotalPrice() {
+    return this.cart.total;
   }
 }

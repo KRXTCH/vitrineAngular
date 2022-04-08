@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from "../services/Cart.service";
 import {Product} from "../models/product.models";
 import {ProductCart} from "../models/ProductCart";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,12 @@ import {ProductCart} from "../models/ProductCart";
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  quantity: number = 1;
+
+
+  isLinear = false;
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
 
   constructor(private cartService: CartService) {
     this.cartService.addToCart(new ProductCart(
@@ -23,15 +30,28 @@ export class CartComponent implements OnInit {
       1));
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {this.firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required],
+    });
   }
 
   get cartItems() {
-    console.log(this.cartService.getCart());
     return this.cartService.getCart();
   }
 
   removeItem(item: ProductCart) {
     this.cartService.removeFromCart(item);
+  }
+
+  changeQuantity(item: ProductCart, quantity: number) {
+    this.cartService.changeQuantity(item, quantity);
+    console.log(item.totalPrice)
+  }
+
+  get totalPrice() {
+    return this.cartService.getTotalPrice();
   }
 }

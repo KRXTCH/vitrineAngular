@@ -12,4 +12,8 @@ export class ProductCart {
         public edition: string,
         public quantity: number,
     ) {}
+
+  get totalPrice() {
+    return this.product.price * this.quantity;
+  }
 }
