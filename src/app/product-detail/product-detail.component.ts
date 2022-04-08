@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   orientation: string = '';
   quantity: number = 1;
   currentPrice! : number;
-  currentEdition : string = "Colector";
+  currentEdition : string = "Collector";
 
   constructor(
     private productService: ProductsService,
@@ -31,7 +31,7 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     this.myProduct = this.productService.getOneProduct(this.id);
     this.orientation = "landscape"
-    this.currentPrice = this.myProduct.editions["Colector"]
+    this.currentPrice = this.myProduct.editions["Collector"]
   }
 
   OnQuantityUp(){
