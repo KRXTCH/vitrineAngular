@@ -1,10 +1,11 @@
+import {Product} from "./product.models";
+import {ProductCart} from "./ProductCart";
+
 export class CartModels {
-  public static readonly cart = {
-    id: '',
-    userId: '',
-    items: [],
-    total: 0,
-    createdAt: '',
-    updatedAt: '',
-  };
+  constructor(
+    public products: ProductCart[],
+    public count: number,
+    public total: number,
+    public createdAt: Date,
+  ) {}
 }
