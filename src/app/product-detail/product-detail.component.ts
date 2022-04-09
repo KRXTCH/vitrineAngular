@@ -13,10 +13,10 @@ import { ProductsService } from '../services/products.service';
 export class ProductDetailComponent implements OnInit {
   myProduct!: any;
   id: number = 0;
-  orientation: string = '';
   quantity: number = 1;
   currentPrice! : number;
   currentEdition : string = "Collector";
+  isInCart : number = 0;
 
   constructor(
     private productService: ProductsService,
@@ -30,8 +30,8 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     this.myProduct = this.productService.getOneProduct(this.id);
-    this.orientation = "landscape"
-    this.currentPrice = this.myProduct.editions["Collector"]
+    this.currentPrice = this.myProduct.editions["Collector"];
+    this.isInCart = this.cartService.isProductInCart({id:this.myProduct.id, quantity : this.quantity, edition : "Collector"});
   }
 
   OnQuantityUp(){
@@ -45,16 +45,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   OnChange(data : any){
-    this.currentPrice = this.myProduct.editions[data.value]
+    this.currentPrice = this.myProduct.editions[data.value];
+    this.currentEdition = data.value;
+    this.isInCart = this.cartService.isProductInCart({id:this.myProduct.id, quantity : this.quantity, edition : this.currentEdition});
   }
 
   AddToCart(){
-    this.cartService.addToCart(new ProductCart(this.myProduct.id, this.myProduct.name, this.myProduct.description,
-      this.myProduct.image, this.currentPrice, this.myProduct.date, this.myProduct.cover_img, this.currentEdition, this.quantity))
-  }
+    this.cartService.addToLocalCart({id:this.myProduct.id, quantity : this.quantity, edition : this.currentEdition});
+    this.isInCart = this.cartService.isProductInCart({id:this.myProduct.id, quantity : this.quantity, edition : this.currentEdition});
 
-  isInCart(name : string){
-    return this.cartService.isProductInCart(name).length;
   }
 
   goToCart(){

@@ -8,6 +8,7 @@ import {ProductCart} from "../models/ProductCart";
 export class CartService {
   cart: CartModels = new CartModels([], 0, 0, new Date());
   previousQuantity: number = 1;
+  loaclCart: Array<any> = []
 
   constructor() {
   }
@@ -16,6 +17,14 @@ export class CartService {
     this.cart.products.push(productCart);
     this.cart.total += productCart.price * productCart.quantity;
     this.cart.count++;
+  }
+
+  addToLocalCart(data: any){
+    if(this.isProductInCart(data) === 0){
+      console.log(this.loaclCart)
+      this.loaclCart.push(data);
+      localStorage.setItem("cart", JSON.stringify(this.loaclCart));
+    }
   }
 
   getProductCount(){
@@ -61,7 +70,10 @@ export class CartService {
     return this.cart.total;
   }
 
-  isProductInCart(productName : string){
-    return (this.cart.products || []).filter(p => p.name === productName);
+  isProductInCart(data : any){
+    if(this.loaclCart === null){
+      this.loaclCart = JSON.parse(localStorage.getItem("cart") as string);
+    }
+    return this.loaclCart.filter( e => e.id === data.id && e.edition === data.edition).length;
   }
 }

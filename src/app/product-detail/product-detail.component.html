@@ -46,8 +46,8 @@
                                 </select>
                             </div>
                         </div>
-                        <button class="add-to-cart-button" *ngIf="isInCart(myProduct.name) > 0" (click)="goToCart()">Go to cart</button>
-                        <button class="add-to-cart-button" *ngIf="isInCart(myProduct.name) === 0" (click)="AddToCart()">Add to cart</button>
+                        <button class="add-to-cart-button" *ngIf="isInCart > 0" (click)="goToCart()">Go to cart</button>
+                        <button class="add-to-cart-button" *ngIf="isInCart === 0" (click)="AddToCart()">Add to cart</button>
                     </mat-card>
                 </div>
             </div>
