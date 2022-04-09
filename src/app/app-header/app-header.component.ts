@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 
+
 @Component({
   selector: 'app-app-header',
   templateUrl: './app-header.component.html',
@@ -9,9 +10,14 @@ import { ProductsService } from '../services/products.service';
 
 export class AppHeaderComponent implements OnInit {
   @Output() onSearch = new EventEmitter()
-  search : string = ""
+  @Output() onChangeName = new EventEmitter()
+  @Output() onChangeDate = new EventEmitter()
 
-  constructor(private productsService: ProductsService){ 
+  search : string = ""
+  dateSort: string = ""
+  nameSort: string = ""
+
+  constructor(){
   }
 
   ngOnInit(): void {
@@ -21,11 +27,11 @@ export class AppHeaderComponent implements OnInit {
     this.onSearch.emit(data);
   }
 
-  OnNameSelectorChange(event: Event){
-    this.productsService.setNameOrderBy( (event.target as HTMLTextAreaElement).value)
+  OnNameSelectorChange(data: Event){
+    this.onChangeName.emit((data.target as HTMLTextAreaElement).value);
   }
 
-  OnDateSelectorChange(event: Event){
-    this.productsService.setDateOrderBy((event.target as HTMLTextAreaElement).value)
+  OnDateSelectorChange(data : Event){
+    this.onChangeDate.emit((data.target as HTMLTextAreaElement).value);
   }
 }

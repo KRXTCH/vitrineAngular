@@ -9,11 +9,8 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductsListComponent implements OnInit {
   products!: Product[];
-
-  sortNameOrderBy : string = "asc";
-
-  sortDateOrderBy : string = "asc";
-
+  sortNameOrderBy : string = 'asc';
+  sortDateOrderBy : string = 'asc';
   search: string = "";
 
   constructor(private productsService: ProductsService){ }
@@ -24,5 +21,13 @@ export class ProductsListComponent implements OnInit {
 
   onSearchProduct(data : string){
     this.search = data;
+   }
+
+   onNameChange(data: string){
+     this.sortNameOrderBy = data;
+   }
+
+   onDateChange(data: string){
+      this.sortDateOrderBy = data;
    }
 }

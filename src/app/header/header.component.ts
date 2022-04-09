@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +10,10 @@ export class HeaderComponent implements OnInit {
   @Output() onSearch = new EventEmitter();
   search: string = '';
 
-  constructor(private productsService: ProductsService, private router: Router) {}
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+  }
 
   searchThis() {
     this.onSearch.emit(this.search);
@@ -19,9 +21,5 @@ export class HeaderComponent implements OnInit {
     if(window.location.href != "http://localhost:4200/"){
       this.router.navigate(['']);
     }
-  }
-
-  ngOnInit(): void {
-    this.onSearch.emit(this.productsService.search);
   }
 }

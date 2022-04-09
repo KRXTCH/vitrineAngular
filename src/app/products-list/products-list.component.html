@@ -1,13 +1,12 @@
 <div class="app">
-    <app-app-header (onSearch)="onSearchProduct($event)">
+    <app-app-header (onSearch)="onSearchProduct($event)" (onChangeName)="onNameChange($event)" (onChangeDate)="onDateChange($event)">
     </app-app-header>
     <div class="app-body">
       <mat-card class="card-custom">
-        <mat-card-header class="card-header">
-        </mat-card-header>
+        <mat-card-header class="card-header"></mat-card-header>
         <div class="gamelist-container">
           <mat-grid-list class="grid-list" cols="3" rowHeight="200px">
-            <mat-grid-tile *ngFor="let product of (products | sortByName : sortNameOrderBy | sortByDate : sortDateOrderBy | search : search)">
+            <mat-grid-tile *ngFor="let product of (products | search : search | sortByName : sortNameOrderBy | sortByDate : sortDateOrderBy )">
               <a [routerLink]="['product', product.id]">
                 <app-product-card [myProduct]="product"></app-product-card>
               </a>

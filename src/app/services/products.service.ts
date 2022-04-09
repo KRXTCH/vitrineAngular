@@ -76,17 +76,6 @@ export class ProductsService {
             {"Limited": 47.49, "Collector" : 32.49, "Standard" : 17.49}
         )
     ];
-    sortNameOrderBy : string = "asc";
-    sortDateOrderBy : string = "asc";
-    search : string = "";
-
-    setNameOrderBy(value : string){
-        this.sortNameOrderBy = value
-    }
-
-    setDateOrderBy(value : string){
-        this.sortDateOrderBy = value
-    }
 
     getOneProduct(id: number) {
         return this.products.find((p) => p.id === id);
