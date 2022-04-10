@@ -99,9 +99,9 @@ export class ProductsService {
   ];
 
   getOneProduct(id: number) {
-    // return <Observable<Product>>(
-    //     this.http.get(`http://localhost:3000/products/${id}`)
-    //   );
-    return this.products.find((p) => p.id === id);
+    return <Observable<Product>>(
+        this.http.get(`http://localhost:3000/products/${id}`)
+      );
+    // return this.products.find((p) => p.id === id);
   }
 }

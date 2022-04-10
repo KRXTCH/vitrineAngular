@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../models/product.models';
-import { ProductCart } from '../models/ProductCart';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../services/Cart.service';
-import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,25 +8,18 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  myProduct!: any;
-  id: number = 0;
+  @Input() myProduct!: any;
   quantity: number = 1;
   currentPrice! : number;
   currentEdition : string = "Collector";
   isInCart : number = 0;
 
   constructor(
-    private productService: ProductsService,
     private cartService : CartService,
-    private route: ActivatedRoute,
     private router: Router) {
-    this.route.params.subscribe( params => {
-      this.id = parseInt(params['id'])
-    } );
    }
 
   ngOnInit() {
-    this.myProduct = this.productService.getOneProduct(this.id);
     this.currentPrice = this.myProduct.editions["Collector"];
     this.isInCart = this.cartService.isProductInCart({id:this.myProduct.id, quantity : this.quantity, edition : "Collector"});
   }

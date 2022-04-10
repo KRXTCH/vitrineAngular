@@ -27,6 +27,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
+import { ProductDetailApiCallComponent } from './product-detail-api-call/product-detail-api-call.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { HeaderComponent } from './header/header.component';
     ProductDetailComponent,
     CartComponent,
     CartQuantitySelectComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductDetailApiCallComponent
   ],
   imports: [
     BrowserModule,
