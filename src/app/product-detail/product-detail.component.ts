@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from '../models/product.models';
 import { CartService } from '../services/Cart.service';
 
 @Component({
@@ -18,11 +19,13 @@ export class ProductDetailComponent implements OnInit {
     private cartService : CartService,
     private router: Router) {
    }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    
+  }
+  ngOnChanges() {
     this.currentPrice = this.myProduct.editions["Collector"];
     this.isInCart = this.cartService.isProductInCart({id:this.myProduct.id, quantity : this.quantity, edition : "Collector"});
-  }
+  } 
 
   OnQuantityUp(){
     this.quantity++;
