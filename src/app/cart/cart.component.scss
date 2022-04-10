@@ -1,7 +1,34 @@
 .mat-stepper-horizontal {
-  margin-top: 8px;
+
 }
 
 .mat-form-field {
   margin-top: 16px;
+}
+
+.ng-container {
+  background-color: #424242;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  color : white;
+  display: flex;
+  justify-content: center;
+}
+
+.button-navigation-step {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-navigation-next {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-navigation-previous {
+  display: flex;
+  justify-content: flex-start;
 }

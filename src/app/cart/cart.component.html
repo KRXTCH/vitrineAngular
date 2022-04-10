@@ -1,7 +1,12 @@
 <ng-container>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+  <div class="ng-container">
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup" >
+          <ng-template matStepLabel>Confirm your cart</ng-template>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
                 <h1 class="title">Cart</h1>
                 <hr>
                 <p *ngIf="cartItems.count == 0">Panier vide :(</p>
@@ -10,26 +15,28 @@
                     <div class="col-md-12">
                       <table class="table table-striped">
                         <thead>
-                          <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th></th>
-                          </tr>
+                        <tr>
+                          <th>Product</th>
+                          <th>Collection</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                          <th>Total</th>
+                          <th></th>
+                        </tr>
                         </thead>
                         <tbody>
-                                <tr *ngFor="let item of cartItems.products">
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.price | currency:'USD':true}}</td>
-                                    <td>
-                                        <input type="number" class="form-control" [(ngModel)]="item.quantity" />
-                                    </td>
-                                    <td>{{item.price | currency:'USD':true}}</td>
-                                    <td>
-                                        <button class="btn btn-danger" (click)="removeItem(item)">Remove</button>
-                                    </td>
-                                </tr>
+                        <tr *ngFor="let item of cartItems.products">
+                          <td>{{item.name}}</td>
+                          <td>{{item.edition}}</td>
+                          <td>{{item.price | currency:'USD':true}}</td>
+                          <td>
+                            <app-cart-quantity-select [product]="item"></app-cart-quantity-select>
+                          </td>
+                          <td>{{item.totalPrice| currency:'USD':true}}</td>
+                          <td>
+                            <button class="btn btn-danger" (click)="removeItem(item)">Remove</button>
+                          </td>
+                        </tr>
                         </tbody>
                         <div class="row">
                           <div class="col-md-12">
@@ -39,15 +46,68 @@
                       </table>
                     </div>
                   </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <button class="btn btn-success" >Checkout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="button-navigation-step">
+          <a href="/">
+            <button mat-button matStepperPrevious>Go back</button>
+          </a>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Contact</ng-template>
+        <!-- contact form -->
+        <form >
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <h1 class="title">Contact</h1>
+                <hr>
+                <div class="row">
+                  <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Prénom</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="your firstname" (keyup)="onKey($event, 'firstName')">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Nom</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="your lastname" (keyup)="onKey($event, 'lastName')">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Adresse</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="Your adrress" (keyup)="onKey($event, 'address')">
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </form>
+        <div class="button-navigation-step">
+          <button mat-button matStepperPrevious>Prev</button>
+          <button mat-button matStepperNext (click)="generateCommandId()">Confirm</button>
         </div>
-    </div>
-
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div class="card">
+          <div class="card-body">
+            thanks {{firstName}} {{lastName}} for your order!
+            It will be delivered to {{address}}. your command id is {{commandID}}
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary">
+          Confirm
+        </button>
+      </mat-step>
+    </mat-stepper>
+  </div>
 </ng-container>
