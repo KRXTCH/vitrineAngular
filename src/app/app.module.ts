@@ -25,7 +25,7 @@ import { CartQuantitySelectComponent } from './cart-quantity-select/cart-quantit
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
-
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 
 
@@ -56,7 +56,8 @@ import { HeaderComponent } from './header/header.component';
     MatStepperModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,8 +5,8 @@
       <mat-card class="card-custom">
         <mat-card-header class="card-header"></mat-card-header>
         <div class="gamelist-container">
-          <mat-grid-list class="grid-list" cols="3" rowHeight="200px">
-            <mat-grid-tile *ngFor="let product of (products | search : search | sortByName : sortNameOrderBy | sortByDate : sortDateOrderBy )">
+          <mat-grid-list class="grid-list" cols="3" rowHeight="200px"  *ngIf="products | async">
+            <mat-grid-tile *ngFor="let product of products | async | search : search | sortByName : sortNameOrderBy | sortByDate : sortDateOrderBy">
               <a [routerLink]="['product', product.id]">
                 <app-product-card [myProduct]="product"></app-product-card>
               </a>

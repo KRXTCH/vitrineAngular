@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Product } from '../models/product.models';
 import { ProductsService } from '../services/products.service';
 
@@ -8,15 +9,16 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-  products!: Product[];
+  products!: Observable<any>;
   sortNameOrderBy : string = 'asc';
   sortDateOrderBy : string = 'asc';
   search: string = "";
 
-  constructor(private productsService: ProductsService){ }
+  constructor(public productsService: ProductsService){ }
 
   ngOnInit() {
-    this.products = this.productsService.products;
+    this.products = this.productsService.getAllProducts();
+    console.log(this.productsService.products);
   }
 
   onSearchProduct(data : string){
